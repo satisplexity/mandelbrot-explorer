@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Shaders\Mandelbrot.ps" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Shaders\Mandelbrot.ps" />
+  </ItemGroup>
+
 </Project>
