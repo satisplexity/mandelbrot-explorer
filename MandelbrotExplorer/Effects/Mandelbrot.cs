@@ -35,6 +35,22 @@ public sealed class Mandelbrot : ShaderEffect
         PaddingBottom = 0;
         PaddingLeft = 0;
         PaddingRight = 0;
+
+        UpdateShaderValue(InputProperty);
+
+        UpdateShaderValue(CenterHiProperty);
+        UpdateShaderValue(CenterLoProperty);
+
+        UpdateShaderValue(ScaleHiProperty);
+        UpdateShaderValue(ScaleLoProperty);
+
+        UpdateShaderValue(AspectProperty);
+
+        UpdateShaderValue(BackgroundColorProperty);
+        UpdateShaderValue(EscapeColorProperty);
+        UpdateShaderValue(SetColorProperty);
+
+        UpdateShaderValue(IterationsLimitProperty);
     }
 
     /// <summary>
@@ -236,4 +252,19 @@ public sealed class Mandelbrot : ShaderEffect
     }
 
     #endregion
+
+    public static readonly DependencyProperty IterationsLimitProperty
+        = DependencyProperty.Register(
+            nameof(IterationsLimit),
+            typeof(float),
+            typeof(Mandelbrot),
+            new UIPropertyMetadata(
+                4f,
+                PixelShaderConstantCallback(8)));
+
+    public float IterationsLimit
+    {
+        get => (float)GetValue(IterationsLimitProperty);
+        set => SetValue(IterationsLimitProperty, value);
+    }
 }

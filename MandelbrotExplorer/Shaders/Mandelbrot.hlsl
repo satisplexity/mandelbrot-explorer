@@ -20,6 +20,8 @@ float4 BackgroundColor : register(c5);
 float4 EscapeColor     : register(c6);
 float4 SetColor        : register(c7);
 
+float MaxIterations : register(c8);
+
 // Extended-precision values are represented as float2(high, low).
 // Each pair approximates a single number as high + low.
 // This is float-pair arithmetic, not native double-precision arithmetic.
@@ -181,14 +183,14 @@ float4 main(float2 uv : TEXCOORD) : COLOR
     float2 zr = float2(0.0, 0.0);
     float2 zi = float2(0.0, 0.0);
 
-    const int MaxIterations = 8;
-
     // Record whether the orbit escaped and its zero-based escape iteration.
     float escaped = 0.0;
     float escapeIteration = (float)MaxIterations;
 
+    int iterationLimit = (int)max(1.0, MaxIterations);
+
     [loop]
-    for (int i = 0; i < MaxIterations; i++)
+    for (int i = 0; i < iterationLimit; i++)
     {
         // Freeze the orbit after escape, preserving its final value
         // for smooth coloring.
@@ -243,7 +245,7 @@ float4 main(float2 uv : TEXCOORD) : COLOR
         log(log(magnitude)) / log(2.0);
 
     // Normalize the coloring value and clamp it to [0, 1].
-    float t = saturate(smoothIteration / (float)MaxIterations);
+    float t = saturate(smoothIteration / (float)iterationLimit);
 
     // Blend between the two exterior colors.
     return lerp(BackgroundColor, EscapeColor, t);

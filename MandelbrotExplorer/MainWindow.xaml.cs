@@ -234,5 +234,8 @@ public partial class MainWindow : Window
 
         if (MaxIterationText is not null)
             MaxIterationText.Text = maxIterations.ToString();
+
+        if(Mandelbrot is not null)
+            Mandelbrot.IterationsLimit = maxIterations;
     }
 }

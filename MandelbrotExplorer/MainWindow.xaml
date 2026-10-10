@@ -33,7 +33,7 @@
             <Slider
                 x:Name="MaxIterationsSlider"
                 Minimum="4"
-                Maximum="254"
+                Maximum="144"
                 Margin="20, 0, 20, 0"
                 MaxWidth="200"
                 ValueChanged="Slider_ValueChanded"/>
