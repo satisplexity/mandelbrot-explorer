@@ -12,32 +12,46 @@
 
     <Grid>
 
-        <Border
-            x:Name="Fractal"
-            Background="Black"
-            Margin="100"
-            CornerRadius="20"
-            helpers:ClipHelper.Enable="True">
-            
-            <Border.Effect>
-                
-                <effects:Mandelbrot
-                    x:Name="Mandelbrot"
-                    BackgroundColor="#191919"
-                    EscapeColor="#1254Af"
-                    SetColor="#5853AF"/>
-            
-            </Border.Effect>
-            
-        </Border>
-        
-        <TextBlock
-            x:Name="ZoomText"
-            Text="Zoom x"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Margin="10"/>
-        
+        <Grid
+            Margin="50">
+
+            <Border
+                x:Name="Fractal"
+                Background="Black"
+                CornerRadius="20"
+                helpers:ClipHelper.Enable="True">
+
+                <Border.Effect>
+
+                    <effects:Mandelbrot
+                        x:Name="Mandelbrot"
+                        BackgroundColor="#191919"
+                        EscapeColor="#1254Af"
+                        SetColor="#5853AF"/>
+
+                </Border.Effect>
+
+            </Border>
+
+            <Border
+                CornerRadius="10"
+                Margin="20"
+                Background="#66191919"
+                BorderThickness="1"
+                BorderBrush="#242426"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Padding="20, 10">
+
+                <TextBlock
+                    x:Name="ZoomText"
+                    Text="Zoom 9x"
+                    Style="{StaticResource ZoomText}"/>
+
+            </Border>
+
+        </Grid>
+
     </Grid>
     
 </Window>

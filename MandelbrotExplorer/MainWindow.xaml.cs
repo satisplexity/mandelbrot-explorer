@@ -23,7 +23,6 @@ public partial class MainWindow : Window
     private bool _isPanning;
     private Point _lastMousePosition;
 
-
     private readonly Stopwatch _clock = Stopwatch.StartNew();
     private double _lastTime;  
 
@@ -53,6 +52,14 @@ public partial class MainWindow : Window
         _centerY = Smooth(_centerY, _targetCenterY, factor);
 
         UploadCamera();
+        UpdateZoomText();
+    }
+
+    private void UpdateZoomText()
+    {
+        double dispScale = _scale.Hi + _scale.Lo;
+
+        ZoomText.Text = $"Zoom {Math.Round(1.5 / dispScale, 1)}x";
     }
 
     private static DoubleDouble Smooth(DoubleDouble current, DoubleDouble target, double factor)
@@ -140,10 +147,6 @@ public partial class MainWindow : Window
         _targetCenterY = anchorY - newScale * ny;
 
         _targetScale = newScale;
-
-        double dispScale = _targetScale.Hi + _targetScale.Lo;
-
-        ZoomText.Text = $"Zoom {Math.Round(1.5 / dispScale, 1)}x";
     }
 
     private void UploadCamera()
