@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:effects="clr-namespace:MandelbrotExplorer.Effects"
+    xmlns:helpers="clr-namespace:MandelbrotExplorer.Helpers"
     Title="Mandelbrot explorer" 
     Height="450"
     Width="800"
@@ -15,7 +16,8 @@
             x:Name="Fractal"
             Background="Black"
             Margin="100"
-            CornerRadius="100">
+            CornerRadius="20"
+            helpers:ClipHelper.Enable="True">
             
             <Border.Effect>
                 
