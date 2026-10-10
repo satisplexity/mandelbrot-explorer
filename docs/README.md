@@ -9,15 +9,24 @@ An interactive Mandelbrot set explorer built with **C#, WPF, and HLSL**. Navigat
 
 ### Overview
 
-![Mandelbrot Explorer overview](docs/screenshots/overview.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/satisplexity/mandelbrot-explorer/main/assets/overview.png"
+       alt="Overview">
+</p>
 
 ### Zoomed view
 
-![A zoomed view of the Mandelbrot set](docs/screenshots/zoom.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/satisplexity/mandelbrot-explorer/main/assets/zoom.png"
+       alt="Zoom">
+</p>
 
 ### Fractal detail
 
-![A detailed region of the Mandelbrot set](docs/screenshots/detail.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/satisplexity/mandelbrot-explorer/main/assets/detail.png"
+       alt="Detail">
+</p>
 
 ## Features
 
