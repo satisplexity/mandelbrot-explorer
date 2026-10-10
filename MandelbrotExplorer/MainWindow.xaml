@@ -14,8 +14,6 @@
         <Border
             x:Name="Fractal"
             Background="Black"
-            MouseWheel="Fractal_OnMouseWheel"
-            SizeChanged="Fractal_OnSizeChanged"
             Margin="100"
             CornerRadius="100">
             
