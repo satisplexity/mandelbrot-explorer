@@ -6,10 +6,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationIcon>MandelbrotExplorer.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Shaders\Mandelbrot.ps" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MandelbrotExplorer.ico" />
   </ItemGroup>
 
   <ItemGroup>
