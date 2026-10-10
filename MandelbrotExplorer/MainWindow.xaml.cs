@@ -49,8 +49,18 @@ public partial class MainWindow : Window
         Fractal.MouseLeftButtonUp += Fractal_OnMouseLeftButtonUp;
         Fractal.MouseWheel += Fractal_OnMouseWheel;
         Fractal.MouseMove += Fractal_OnMouseMove;
+        Fractal.SizeChanged += Fractal_SizeChanged;
 
         CompositionTarget.Rendering += OnRendering;
+    }
+
+    private void Fractal_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        DpiScale dpi = VisualTreeHelper.GetDpi(Fractal);
+
+        Mandelbrot.PixelSize = new Point(
+            1.0 / (Fractal.ActualWidth * dpi.DpiScaleX),
+            1.0 / (Fractal.ActualHeight * dpi.DpiScaleY));
     }
 
     /// <summary>

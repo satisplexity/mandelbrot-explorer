@@ -20,7 +20,10 @@ float4 BackgroundColor : register(c5);
 float4 EscapeColor     : register(c6);
 float4 SetColor        : register(c7);
 
-float MaxIterations : register(c8);
+float IterationsLimit : register(c8);
+
+// Size of one output pixel in UV coordinates.
+float2 PixelSize : register(c9);
 
 // Extended-precision values are represented as float2(high, low).
 // Each pair approximates a single number as high + low.
@@ -158,7 +161,7 @@ float2 ddSqr(float2 a)
 /// Maps the pixel to the complex plane, evaluates the Mandelbrot iteration,
 /// and returns a color based on whether and when the orbit escapes.
 /// </summary>
-float4 main(float2 uv : TEXCOORD) : COLOR
+float4 RenderFractal(float2 uv)
 {
     // Map texture coordinates from [0, 1] to [-1, 1].
     float2 ndc = uv * 2.0 - 1.0;
@@ -185,9 +188,9 @@ float4 main(float2 uv : TEXCOORD) : COLOR
 
     // Record whether the orbit escaped and its zero-based escape iteration.
     float escaped = 0.0;
-    float escapeIteration = (float)MaxIterations;
+    float escapeIteration = (float)IterationsLimit;
 
-    int iterationLimit = (int)max(1.0, MaxIterations);
+    int iterationLimit = (int)max(1.0, IterationsLimit);
 
     [loop]
     for (int i = 0; i < iterationLimit; i++)
@@ -249,4 +252,24 @@ float4 main(float2 uv : TEXCOORD) : COLOR
 
     // Blend between the two exterior colors.
     return lerp(BackgroundColor, EscapeColor, t);
+}
+
+float4 main(float2 uv : TEXCOORD) : COLOR
+{
+    // Sample the center of each quarter of the pixel.
+    float2 offset = PixelSize * 0.25;
+
+    float4 color = RenderFractal(
+        uv + float2(-offset.x, -offset.y));
+
+    color += RenderFractal(
+        uv + float2(offset.x, -offset.y));
+
+    color += RenderFractal(
+        uv + float2(-offset.x, offset.y));
+
+    color += RenderFractal(
+        uv + float2(offset.x, offset.y));
+
+    return color * 0.25;
 }

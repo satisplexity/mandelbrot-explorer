@@ -26,21 +26,22 @@
             Margin="20">
 
             <TextBlock
-                Text="Max iterations"
+                Text="Iterations limit"
                 Style="{StaticResource ZoomText}"
                 VerticalAlignment="Center"/>
 
             <Slider
                 x:Name="MaxIterationsSlider"
                 Minimum="4"
-                Maximum="144"
+                Maximum="128"
+                Value="64"
                 Margin="20, 0, 20, 0"
                 MaxWidth="200"
                 ValueChanged="Slider_ValueChanded"/>
 
             <TextBlock
                 x:Name="MaxIterationText"
-                Text="4"
+                Text="64"
                 Style="{StaticResource ZoomText}"
                 VerticalAlignment="Center"/>
 

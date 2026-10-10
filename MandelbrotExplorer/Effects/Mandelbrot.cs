@@ -51,6 +51,8 @@ public sealed class Mandelbrot : ShaderEffect
         UpdateShaderValue(SetColorProperty);
 
         UpdateShaderValue(IterationsLimitProperty);
+
+        UpdateShaderValue(PixelSizeProperty);
     }
 
     /// <summary>
@@ -259,12 +261,30 @@ public sealed class Mandelbrot : ShaderEffect
             typeof(float),
             typeof(Mandelbrot),
             new UIPropertyMetadata(
-                4f,
+                64f,
                 PixelShaderConstantCallback(8)));
 
     public float IterationsLimit
     {
         get => (float)GetValue(IterationsLimitProperty);
         set => SetValue(IterationsLimitProperty, value);
+    }
+
+    public static readonly DependencyProperty PixelSizeProperty =
+        DependencyProperty.Register(
+            nameof(PixelSize),
+            typeof(Point),
+            typeof(Mandelbrot),
+            new UIPropertyMetadata(
+                new Point(0, 0),
+                PixelShaderConstantCallback(9)));
+
+    /// <summary>
+    /// Gets or sets the size of one output pixel in UV coordinates.
+    /// </summary>
+    public Point PixelSize
+    {
+        get => (Point)GetValue(PixelSizeProperty);
+        set => SetValue(PixelSizeProperty, value);
     }
 }
