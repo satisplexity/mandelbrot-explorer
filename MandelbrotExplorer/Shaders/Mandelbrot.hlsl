@@ -181,7 +181,7 @@ float4 main(float2 uv : TEXCOORD) : COLOR
     float2 zr = float2(0.0, 0.0);
     float2 zi = float2(0.0, 0.0);
 
-    const int MaxIterations = 254;
+    const int MaxIterations = 8;
 
     // Record whether the orbit escaped and its zero-based escape iteration.
     float escaped = 0.0;

@@ -5,15 +5,50 @@
     xmlns:effects="clr-namespace:MandelbrotExplorer.Effects"
     xmlns:helpers="clr-namespace:MandelbrotExplorer.Helpers"
     Title="Mandelbrot explorer" 
-    Height="450"
+    Height="600"
     Width="800"
     UseLayoutRounding="True"
     ThemeMode="Dark">
 
     <Grid>
 
+        <Grid.RowDefinitions>
+
+            <RowDefinition
+                Height="Auto"/>
+
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Orientation="Horizontal"
+            Margin="20">
+
+            <TextBlock
+                Text="Max iterations"
+                Style="{StaticResource ZoomText}"
+                VerticalAlignment="Center"/>
+
+            <Slider
+                x:Name="MaxIterationsSlider"
+                Minimum="4"
+                Maximum="254"
+                Margin="20, 0, 20, 0"
+                MaxWidth="200"
+                ValueChanged="Slider_ValueChanded"/>
+
+            <TextBlock
+                x:Name="MaxIterationText"
+                Text="4"
+                Style="{StaticResource ZoomText}"
+                VerticalAlignment="Center"/>
+
+        </StackPanel>
+        
         <Grid
-            Margin="50">
+            Margin="20"
+            Grid.Row="1">
 
             <Border
                 x:Name="Fractal"

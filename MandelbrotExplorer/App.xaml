@@ -15,6 +15,9 @@
                 <ResourceDictionary
                     Source="/Styles/TextBlockStyles.xaml"/>
 
+                <ResourceDictionary
+                    Source="/Styles/Slider.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
             
         </ResourceDictionary>

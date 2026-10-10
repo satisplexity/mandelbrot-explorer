@@ -227,4 +227,12 @@ public partial class MainWindow : Window
         // Supply the viewport aspect ratio for coordinate mapping.
         Mandelbrot.Aspect = (float)(Fractal.ActualWidth / Fractal.ActualHeight);
     }
+
+    private void Slider_ValueChanded(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        int maxIterations = (int)MaxIterationsSlider.Value;
+
+        if (MaxIterationText is not null)
+            MaxIterationText.Text = maxIterations.ToString();
+    }
 }
